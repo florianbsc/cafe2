@@ -68,6 +68,9 @@ switch ($typeConnexion) {
             case "Gerer_monCompte":
                 include "Controleur/Controleur_Gerer_monCompte.php";
                 break;
+            case "RGPD" :
+                include "Controleur/Controleur_RGPD.php";
+                break;
             default:
                 $Vue->setMenu(new Vue_Menu_Administration());
                 break;

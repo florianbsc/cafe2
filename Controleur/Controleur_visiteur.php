@@ -50,7 +50,11 @@ switch ($action) {
                                 break;
                             case 2:
                                 $_SESSION["typeConnexionBack"] = "utilisateurCafe";
-                                $Vue->setMenu(new Vue_Menu_Administration());
+                                if ($utilisateur ['aAccepteRGPD'] == 1){
+                                    $Vue->setMenu(new Vue_Menu_Administration());
+                                } else {
+                                    $Vue->addToCorps(new \App\Vue\Vue_ConsentementRGPD());
+                                }
                                 break;
                             case 3:
                                 $_SESSION["typeConnexionBack"] = "entrepriseCliente";
@@ -62,7 +66,15 @@ switch ($action) {
                                 $_SESSION["typeConnexionBack"] = "salarieEntrepriseCliente";
                                 $_SESSION["idSalarie"] = $utilisateur["idUtilisateur"];
                                 $_SESSION["idEntreprise"] = Modele_Salarie::Salarie_Select_byId($_SESSION["idUtilisateur"])["idEntreprise"];
-                                include "./Controleur/Controleur_Catalogue_client.php";
+                                if ($utilisateur ['aAccepteRGPD'] == 1){
+
+                                    include "./Controleur/Controleur_Catalogue_client.php";
+
+                                } else {
+                                    include_once('./Controleur/Controleur_RGPD.php');
+
+                                }
+
                                 break;
                         }
 

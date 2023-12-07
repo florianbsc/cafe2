@@ -70,6 +70,25 @@ Rue la Transparence
 
 Si vous estimez, après avoir contacté la société ABCD, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation en ligne à la CNIL.
 
+                <form style='display: contents'>
+                    
+                    <input type='hidden' name='case' value='RGPD'>
+                    
+                    <button type='submit' name='action' value='AccepterRGPD'>
+                        Accepter RGPD
+                    </button>
+                    
+                </form>
+                
+                <form style='display: contents'>
+                    
+                    <input type='hidden' name='case' value='RGPD'>
+                    
+                    <button type='submit' name='action' value='RefuserRGPD'>
+                        Refuser RGPD
+                    </button>
+                    
+                </form>
 ";
         //je crois avoir oublié la fin de la page...
         return $str;

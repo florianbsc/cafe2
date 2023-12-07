@@ -144,15 +144,28 @@ WHERE idUtilisateur = :paramidUtilisateur');
 
         $requetePreparee = $connexionPDO->prepare(
             'UPDATE `utilisateur` 
-SET `desactiver`= :paramdesactiver
-WHERE idUtilisateur = :paramidUtilisateur');
+                    SET `desactiver`= :paramdesactiver
+                    WHERE idUtilisateur = :paramidUtilisateur');
         $requetePreparee->bindParam('paramdesactiver', $desactiver);
         $requetePreparee->bindParam('paramidUtilisateur', $idUtilisateur);
         $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
         return $reponse;
     }
 
+    static function Utilisateur_Modifier_AccepterRGPD($idUtilisateur, $aAccepteRGPD)
 
+    {
+        $connexionPDO = Singleton_ConnexionPDO::getInstance();
+
+        $requetePreparee = $connexionPDO->prepare(
+            'UPDATE `utilisateur` 
+                    SET `aAccepteRGPD`= :paramaAccepteRGPD
+                    WHERE idUtilisateur = :paramidUtilisateur');
+        $requetePreparee->bindParam('paramaAccepteRGPD', $aAccepteRGPD);
+        $requetePreparee->bindParam('paramidUtilisateur', $idUtilisateur);
+        $reponse = $requetePreparee->execute(); //$reponse boolean sur l'état de la requête
+        return $reponse;
+    }
     /**
      * @param $connexionPDO
      * @param $idUtilisateur
